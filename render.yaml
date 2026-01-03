@@ -7,9 +7,9 @@ services:
     
     envVars:
       - key: RABBITMQ_DEFAULT_USER
-        value: seu_usuario_aqui
+        value: hoyer
       - key: RABBITMQ_DEFAULT_PASS
-        value: sua_senha_forte_aqui
+        value: paglemonhoyer
 
     healthCheck:
       port: 15672

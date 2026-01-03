@@ -1,15 +1,16 @@
 services:
-- type: web
-  name: rabbitmq
-  env: docker
-  envVars:
-  - key: RABBITMQ_ERLANG_COOKIE
-    generateValue: true
-  - key: RABBITMQ_DEFAULT_USER
-    value: rabbitmq
-  - key: RABBITMQ_DEFAULT_PASS
-    generateValue: true
-  disk:
-    name: rabbitmq
-    mountPath: /var/lib/rabbitmq
-    sizeGB: 10
+  - type: pserv
+    name: lemon-rabbitmq
+    env: docker
+    dockerImage: rabbitmq:3-management
+    plan: standard
+    
+    ports:
+      - port: 5672
+        protocol: TCP
+      - port: 15672
+        protocol: TCP
+
+    healthCheck:
+      port: 15672
+      path: /api/aliveness-test/

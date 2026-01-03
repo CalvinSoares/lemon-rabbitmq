@@ -4,6 +4,6 @@ COPY rabbitmq.conf /etc/rabbitmq/
 
 RUN chown rabbitmq:rabbitmq /etc/rabbitmq/rabbitmq.conf
 
-EXPOSE 15672 5673
+EXPOSE 15672 5672 
 
 USER rabbitmq:rabbitmq

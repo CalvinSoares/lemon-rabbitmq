@@ -5,12 +5,13 @@ services:
     dockerImage: rabbitmq:3-management
     plan: standard
     
-    ports:
-      - port: 5672
-        protocol: TCP
-      - port: 15672
-        protocol: TCP
+    envVars:
+      - key: RABBITMQ_DEFAULT_USER
+        value: seu_usuario_aqui
+      - key: RABBITMQ_DEFAULT_PASS
+        value: sua_senha_forte_aqui
 
     healthCheck:
       port: 15672
       path: /api/aliveness-test/
+      initialDelaySeconds: 30
